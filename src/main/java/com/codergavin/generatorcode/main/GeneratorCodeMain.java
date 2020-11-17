@@ -282,6 +282,7 @@ public class GeneratorCodeMain {
          * 3、如果主键不是Integer、Long，需要把Mapper.xml的insert${ClassName}的keyProperty="${pkColumn.type}"属性去掉。
          *
          */
+        /** 用例表 */
         map.put("data_count_test_case", "数据增量校验用例表");
         map.put("data_count_test_report", "数据量校验结果表");
         map.put("data_null_test_case", "空值校验用例表");
@@ -338,6 +339,18 @@ public class GeneratorCodeMain {
         map.put("small_file_check_test_report", "小文件及数据倾斜测试结果表");
         map.put("table_partitions_check_test_case", "分区数量检测用例表");
         map.put("table_partitions_check_test_report", "分区数量检测结果表");
+
+        /** 创建表 */
+        map.put("cluster", "集群表");
+        map.put("project", "项目表");
+        map.put("exec_plan_detail", "执行计划明细表");
+        map.put("exec_plan", "执行计划表");
+        map.put("exec_result", "执行结果表");
+        map.put("case_fields", "用例字段表");
+        map.put("case_type", "用例类型表");
+        map.put("case_report", "用例报告对应关系表");
+        map.put("report_fields", "报告表");
+        map.put("case_manage", "用例管理表");
 
 
         Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();

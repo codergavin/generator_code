@@ -34,4 +34,13 @@ public class ${ClassName}  implements Serializable {
 		this.${column.name} = ${column.name};
 	}
 </#list>
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		<#list table.columns as column>
+		sb.append("${column.name}:").append(get${column.nameUpper}()).append(";");
+		</#list>
+		return sb.toString();
+	}
 }
