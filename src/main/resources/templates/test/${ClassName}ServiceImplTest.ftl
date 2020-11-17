@@ -71,7 +71,6 @@ public class ${ClassName}ServiceImplTest  {
 	*/
 	@Test
 	public void delete${ClassName}ByIds() {
-
 	}
 
 	/**
@@ -79,7 +78,6 @@ public class ${ClassName}ServiceImplTest  {
 	*/
 	@Test
 	public void delete${ClassName}ById() {
-
 	}
 
 }

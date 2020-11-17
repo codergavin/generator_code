@@ -21,6 +21,8 @@
         <sqlserver.version>4.0</sqlserver.version>
         <commons.io.version>2.5</commons.io.version>
         <commons-lang3.version>3.11</commons-lang3.version>
+        <jackson-annotations.version>2.11.2</jackson-annotations.version>
+        <pagehelper.boot.version>1.2.5</pagehelper.boot.version>
     </properties>
 
     <dependencies>
@@ -68,6 +70,18 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
+        </dependency>
+        <!--BaseEntity需要 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson-annotations.version}</version>
+        </dependency>
+        <!-- pagehelper 分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>${pagehelper.boot.version}</version>
         </dependency>
 
     </dependencies>
