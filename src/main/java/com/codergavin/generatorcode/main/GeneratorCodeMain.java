@@ -26,6 +26,11 @@ import java.util.*;
  */
 public class GeneratorCodeMain {
     private Logger logger = LoggerFactory.getLogger(GeneratorCodeMain.class);
+
+    public static final String GENERATOR_TYPE_PAGEHELPER = "pagehelper";
+    public static final String GENERATOR_TYPE_MYBATISPLUS = "mybatisplus";
+    public static String GENERATOR_TYPE_NORMAL = GENERATOR_TYPE_PAGEHELPER;
+
     private Properties properties;
 
     /**
@@ -250,7 +255,7 @@ public class GeneratorCodeMain {
             if (f.getParentFile().compareTo(tdf) != 0) {
                 parentDir = f.getParent().split("templates")[1];
             }
-            cfg.setClassForTemplateLoading(this.getClass(), "/templates" + parentDir);
+            cfg.setClassForTemplateLoading(this.getClass(), "/templates/" + GENERATOR_TYPE_NORMAL + parentDir);
 
             Template template = cfg.getTemplate(f.getName());
             template.setEncoding("UTF-8");
