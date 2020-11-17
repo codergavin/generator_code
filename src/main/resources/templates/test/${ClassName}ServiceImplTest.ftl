@@ -6,6 +6,10 @@ import java.util.Arrays;
 import java.util.Objects;
 
 import javax.annotation.Resource;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,7 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @date ${date}
  * Description: [${table.tableDesc}单元测试类]
  */
-
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class ${ClassName}ServiceImplTest  {
 
 	@Autowired
