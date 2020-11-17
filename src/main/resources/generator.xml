@@ -27,6 +27,7 @@
      <entry key="SMALLINT">Integer</entry>
      <entry key="INTEGER">Integer</entry>
      <entry key="INTEGER UNSIGNED">Integer</entry>
+     <entry key="INT4">Integer</entry>
      <entry key="INT">Integer</entry>
      <entry key="INT UNSIGNED">Integer</entry>
      <entry key="DATE">java.util.Date</entry>

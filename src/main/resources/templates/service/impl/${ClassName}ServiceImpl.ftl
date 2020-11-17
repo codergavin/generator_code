@@ -7,10 +7,10 @@ import java.util.Objects;
 
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
-import ${package}.model.Page;
+import org.springframework.beans.factory.annotation.Autowired;
 import ${package}.dao.${ClassName}Mapper;
 import ${package}.model.${ClassName};
-import ${package}.service.${ClassName}Service;
+import ${package}.service.I${ClassName}Service;
 
 /** 
  * @author  ${author}
@@ -19,7 +19,7 @@ import ${package}.service.${ClassName}Service;
  * Description: [${table.tableDesc}服务实现]
  */
 @Service
-public class ${ClassName}ServiceImpl implements ${ClassName}Service {
+public class ${ClassName}ServiceImpl implements I${ClassName}Service {
 	@Autowired
 	private ${ClassName}Mapper ${className}Mapper;
 

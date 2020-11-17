@@ -10,7 +10,7 @@ import ${package}.model.${className};
  * Created on ${date}
  * Description: [${table.tableDesc}服务]
  */
-public interface ${ClassName}Service {
+public interface I${ClassName}Service {
 
 	/**
 	* 查询${functionName}
