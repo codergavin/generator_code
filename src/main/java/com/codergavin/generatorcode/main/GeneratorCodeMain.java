@@ -132,6 +132,7 @@ public class GeneratorCodeMain {
         while (rs.next()) {
             Column c = new Column();
 
+
             String remaks = rs.getString("REMARKS");
 
             c.setLabel(StringUtils.isBlank(remaks) ? "" : remaks);
@@ -253,7 +254,7 @@ public class GeneratorCodeMain {
         for (File f : files) {
             String parentDir = "";
             if (f.getParentFile().compareTo(tdf) != 0) {
-                parentDir = f.getParent().split("templates")[1];
+                parentDir = f.getParent().split(GENERATOR_TYPE_NORMAL)[1];
             }
             cfg.setClassForTemplateLoading(this.getClass(), "/templates/" + GENERATOR_TYPE_NORMAL + parentDir);
 
@@ -287,75 +288,10 @@ public class GeneratorCodeMain {
          * 3、如果主键不是Integer、Long，需要把Mapper.xml的insert${ClassName}的keyProperty="${pkColumn.type}"属性去掉。
          *
          */
-        /** 用例表 */
-        map.put("data_count_test_case", "数据增量校验用例表");
-        map.put("data_count_test_report", "数据量校验结果表");
-        map.put("data_null_test_case", "空值校验用例表");
-        map.put("data_null_test_report", "空值校验结果表");
-        map.put("data_type_test_case", "数据类型校验用例表");
-        map.put("data_type_test_report", "数据类型校验结果表");
-        map.put("data_repeat_test_case", "数据重复校验用例表");
-        map.put("data_repeat_test_report", "数据重复校验结果表");
-        map.put("data_enumeration_test_case", "枚举包含校验用例表");
-        map.put("data_enumeration_test_report", "枚举包含校验结果表");
-        map.put("data_minus_num_test_case", "负值校验用例表");
-        map.put("data_minus_num_test_report", "负值校验结果表");
-        map.put("data_update_intime_test_case", "数据更新及时性校验项用例表");
-        map.put("data_update_intime_test_report", "数据更新及时性校验项结果表");
-        map.put("data_zipper_table_break_test_case", "拉链表断链校验用例表");
-        map.put("data_zipper_table_break_test_report", "拉链表断链校验结果表");
-        map.put("data_missing_one_table_test_case", "单表数据时间范围校验用例表");
-        map.put("data_missing_one_table_test_report", "单表数据时间范围校验结果表");
-        map.put("data_missing_two_table_test_case", "多表数据时间范围校验用例表");
-        map.put("data_missing_two_table_test_report", "多表数据时间范围校验结果表");
-        map.put("data_missing_model_output_test_case", "模型输出范围校验用例表");
-        map.put("data_missing_model_output_test_report", "模型输出范围校验结果表");
-        map.put("data_table_relationship_test_case", "两表包含关系校验用例表");
-        map.put("data_table_relationship_test_report", "两表包含关系校验结果表");
-        map.put("data_same_field_diffrent_test_case", "两表相同字段全等校验用例表");
-        map.put("data_same_field_diffrent_test_report", "两表相同字段全等校验结果表");
-        map.put("field_contain_blank_test_case", "字段内容含空格校验用例表");
-        map.put("field_contain_blank_test_report", "字段内容含空格校验结果表");
-        map.put("data_code_vs_value_test_case", "单表中编码与值对应校验用例表");
-        map.put("data_code_vs_value_test_report", "单表中编码与值对应校验结果表");
-        map.put("data_tree_structure_test_case", "树状结构校验用例表");
-        map.put("data_tree_structure_test_report", "树状结构校验结果表");
-        map.put("pg_data_contain_hive_test_case", "PG数据包含HIVE模型输出数据对比用例表");
-        map.put("pg_data_contain_hive_test_report", "PG数据包含HIVE模型输出数据对比结果表");
-        map.put("data_value_compare_test_case", "数值大小比较校验用例表");
-        map.put("data_value_compare_test_report", "数值大小比较校验结果表");
-        map.put("data_enumeration_equal_test_case", "枚举全等校验用例表");
-        map.put("data_enumeration_equal_test_report", "枚举全等校验结果表");
-        map.put("index_calculation_one_table_test_case", "单表指标计算校验用例表");
-        map.put("index_calculation_one_table_test_report", "单表指标计算校验结果表");
-        map.put("data_output_updatetime_test_case", "数据输出时间校验用例表");
-        map.put("data_output_updatetime_test_report", "数据输出时间校验结果表");
-        map.put("pg_data_equal_hive_test_case", "PG数据与HIVE数据全等校验用例表");
-        map.put("pg_data_equal_hive_test_report", "PG数据与HIVE数据全等校验结果表");
-        map.put("pg_to_hive_test_case", "PG数据导入HIVE用例表");
-        map.put("multi_table_data_value_compare_test_case", "两表数值大小校验用例表");
-        map.put("multi_table_data_value_compare_test_report", "两表数值大小校验结果表");
-        map.put("index_calculation_two_table_test_case", "多表指标计算用例表");
-        map.put("index_calculation_two_table_test_report", "多表指标计算结果表");
-        map.put("customer_data_input_config", "客户数据表导入用例表");
-        map.put("data_test_dev_with_customer_case", "核对客户数据与edw层数据用例表");
-        map.put("data_test_dev_with_customer_report", "核对客户数据与edw层数据结果表");
-        map.put("small_file_check_test_case", "小文件及数据倾斜测试用例表");
-        map.put("small_file_check_test_report", "小文件及数据倾斜测试结果表");
-        map.put("table_partitions_check_test_case", "分区数量检测用例表");
-        map.put("table_partitions_check_test_report", "分区数量检测结果表");
 
         /** 创建表 */
-        map.put("cluster", "集群表");
-        map.put("project", "项目表");
-        map.put("exec_plan_detail", "执行计划明细表");
-        map.put("exec_plan", "执行计划表");
-        map.put("exec_result", "执行结果表");
-        map.put("case_fields", "用例字段表");
-        map.put("case_type", "用例类型表");
-        map.put("case_report", "用例报告对应关系表");
-        map.put("report_fields", "报告表");
-        map.put("case_manage", "用例管理表");
+        map.put("sys_user_detail", "员工花名册");
+        map.put("sys_user_dimission_detail", "离职员工花名册");
 
 
         Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
