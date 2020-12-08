@@ -203,7 +203,7 @@ public class GeneratorCodeMain {
      * @param tableDescAndCat 表描述
      * @throws Exception
      */
-    public void gen(String tableName, String tableDescAndCat, String id, String modelId) throws Exception {
+    public void generator(String tableName, String tableDescAndCat, String id, String modelId) throws Exception {
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_21);
 
         String outRoot = properties.getProperty("outRoot");
@@ -272,9 +272,60 @@ public class GeneratorCodeMain {
         }
     }
 
-    public static void main(String[] args) throws Exception {
+
+    /**
+     * 获取某个库的所有表名
+     */
+    public List<Table> getAllTablesFromDb() throws Exception{
+        String driverName = properties.getProperty("jdbc.driver");
+        String userName = properties.getProperty("jdbc.username");
+        String userPwd = properties.getProperty("jdbc.password");
+        String dbURL = properties.getProperty("jdbc.url");
+
+        String catalog = properties.getProperty("jdbc.catalog");
+        String schema = properties.getProperty("jdbc.schema");
+        schema = schema == null ? "%" : schema;
+        String column = "%";
+
+        logger.debug("driver>>" + driverName);
+        logger.debug("url>>" + dbURL);
+        logger.debug("name>>" + userName);
+        logger.debug("password>>" + userPwd);
+        logger.debug("catalog>>" + catalog);
+        logger.debug("schema>>" + schema);
+
+        Class.forName(driverName);
+        Connection connection = java.sql.DriverManager.getConnection(dbURL, userName, userPwd);
+        DatabaseMetaData dmd = connection.getMetaData();
+        ResultSet rs = dmd.getTables(connection.getCatalog(), connection.getCatalog(), "%",new String[] { "TABLE" });
+
+        List<Table> tableList = new ArrayList<>();
+        while (rs.next()) {
+            Table table =  new Table();
+            //表名
+            String tableName = rs.getString("TABLE_NAME");
+            table.setDbName(tableName);
+            //表备注
+            String remarks = rs.getString("REMARKS");
+            table.setTableDesc(remarks != null && remarks.length() > 0 ? remarks:tableName);
+            /*System.out.println("表名：" + rs.getString("TABLE_NAME"));
+            System.out.println("表类型：" + rs.getString("TABLE_TYPE"));
+            System.out.println("表所属数据库：" + rs.getString("TABLE_CAT"));
+            System.out.println("表所属用户名：" + rs.getString("TABLE_SCHEM"));
+            System.out.println("表备注：" + rs.getString("REMARKS"));*/
+            tableList.add(table);
+        }
+        connection.close();
+        return tableList;
+    }
+
+    /**
+     * 根据某个表名生成代码
+     * @throws Exception
+     */
+    public void generatorWithSomeTable() throws Exception {
         long time = System.currentTimeMillis();
-        GeneratorCodeMain g = new GeneratorCodeMain();
+
         Map<String, String> map = new HashMap<>();
 
         /**
@@ -285,30 +336,43 @@ public class GeneratorCodeMain {
          *      2.2、jdbc.driver
          *      2.3、jdbc.username
          *      2.4、jdbc.password
+         *      2.5、jdbc.schema
+         *      2.6、jdbc.catalog
          * 3、如果主键不是Integer、Long，需要把Mapper.xml的insert${ClassName}的keyProperty="${pkColumn.type}"属性去掉。
-         *
+         * 4、在GeneratorCodeMain类的main方法里面的map里面添加map.put("数据库表名","数据库表名说明解释");
          */
 
         /** 创建表 */
-        map.put("sys_user_detail", "员工花名册");
-        map.put("sys_user_dimission_detail", "离职员工花名册");
-        map.put("sys_user_aff_post_records", "任职记录");
-        map.put("sys_user_aff_assessment_result", "考核结果");
-        map.put("sys_user_aff_family_member", "家庭成员");
-        map.put("sys_user_aff_recognition_awards", "表彰与奖励");
-        map.put("sys_user_aff_education", "教育经历");
-        map.put("sys_user_aff_training", "培训经历");
-        map.put("sys_user_aff_project", "项目经历");
-        map.put("sys_user_aff_certificate", "证书执照");
-        map.put("sys_user_aff_specialized_skill", "专业技能");
+        map.put("about_us", "关于我们");
 
 
         Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry<String, String> e = it.next();
             //设置数据库主键字段
-            g.gen(e.getKey(), e.getValue(), "id", "id");
+            generator(e.getKey(), e.getValue(), "id", "id");
         }
         System.out.println("-------------------模版文件生成完毕，时间：" + (System.currentTimeMillis() - time) + "毫秒 ----------------!!!");
+    }
+
+    /**
+     * 生成某个库的所有表的代码数据
+     * @throws Exception
+     */
+    public void generatorAllTable() throws Exception {
+        List<Table> tableList = getAllTablesFromDb();
+        for (Table table : tableList) {
+            //设置数据库主键字段
+            generator(table.getDbName(), table.getTableDesc(), "id", "id");
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        GeneratorCodeMain g = new GeneratorCodeMain();
+        /** 根据某个表名生成代码 */
+//        g.generatorWithSomeTable();
+        /** 生成某个库的所有表的代码数据 */
+        g.generatorAllTable();
+
     }
 }

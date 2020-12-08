@@ -40,13 +40,20 @@
 
      <!-- MySQL -->
      <!-- 账号密码 -->
-     <entry key="jdbc.username">root</entry>
+     <!-- jdbc.schema，jdbc.catalog库名:这里添加这个是为了，避免多库存在相同的表名 -->
+     <!--<entry key="jdbc.username">root</entry>
      <entry key="jdbc.password">123456</entry>
      <entry key="jdbc.url">jdbc:mysql://localhost:3306/personnel?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=GMT%2B8</entry>
      <entry key="jdbc.driver">com.mysql.cj.jdbc.Driver</entry>
-     <!-- 库名:这里添加这个是为了，避免多库存在相同的表名 -->
      <entry key="jdbc.schema">personnel</entry>
-     <entry key="jdbc.catalog">personnel</entry>
+     <entry key="jdbc.catalog">personnel</entry>-->
+
+     <entry key="jdbc.username">root</entry>
+     <entry key="jdbc.password">123456</entry>
+     <entry key="jdbc.url">jdbc:mysql://localhost:3306/bitrade?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=GMT%2B8</entry>
+     <entry key="jdbc.driver">com.mysql.cj.jdbc.Driver</entry>
+     <entry key="jdbc.schema">bitrade</entry>
+     <entry key="jdbc.catalog">bitrade</entry>
 
 
      <!-- PostgreSql -->
