@@ -292,6 +292,15 @@ public class GeneratorCodeMain {
         /** 创建表 */
         map.put("sys_user_detail", "员工花名册");
         map.put("sys_user_dimission_detail", "离职员工花名册");
+        map.put("sys_user_aff_post_records", "任职记录");
+        map.put("sys_user_aff_assessment_result", "考核结果");
+        map.put("sys_user_aff_family_member", "家庭成员");
+        map.put("sys_user_aff_recognition_awards", "表彰与奖励");
+        map.put("sys_user_aff_education", "教育经历");
+        map.put("sys_user_aff_training", "培训经历");
+        map.put("sys_user_aff_project", "项目经历");
+        map.put("sys_user_aff_certificate", "证书执照");
+        map.put("sys_user_aff_specialized_skill", "专业技能");
 
 
         Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();

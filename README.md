@@ -1,7 +1,13 @@
 # generator_code
 自动生成service/dao/model代码
 ## 操作步骤
+
 一、找到执行类“GeneratorCodeMain”  
+    ```
+        generator.xml 配置数据库信息
+        GeneratorCodeMain 执行主类
+    ```
+
 二、修改部分参数
 
 * 1、可以根据需求修改下面的参数 "author"

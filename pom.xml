@@ -23,6 +23,7 @@
         <commons-lang3.version>3.11</commons-lang3.version>
         <jackson-annotations.version>2.11.2</jackson-annotations.version>
         <pagehelper.boot.version>1.2.5</pagehelper.boot.version>
+        <mybatis-plus.version>3.4.1</mybatis-plus.version>
     </properties>
 
     <dependencies>
@@ -82,6 +83,24 @@
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>${pagehelper.boot.version}</version>
+        </dependency>
+        <!--mybatis-plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
+        <!--mybatis-plus 生成代码 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
+        <!-- 添加 模板引擎 依赖 -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.2</version>
         </dependency>
 
     </dependencies>
