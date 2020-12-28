@@ -34,6 +34,8 @@ public class BaseEntity implements Serializable {
 
     /**
      * 创建时间
+     * postgresql时注意timstamp时区问题，如果出现时区问题，修改成
+     * @JsonFormat(pattern="yyyy-MM-ddHH:mm:ss",timezone="GMT+8")
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
@@ -45,6 +47,8 @@ public class BaseEntity implements Serializable {
 
     /**
      * 更新时间
+     * postgresql时注意timstamp时区问题，如果出现时区问题，修改成
+     * @JsonFormat(pattern="yyyy-MM-ddHH:mm:ss",timezone="GMT+8")
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
