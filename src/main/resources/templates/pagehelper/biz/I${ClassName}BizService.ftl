@@ -18,7 +18,7 @@ public interface I${ClassName}BizService {
 	* @param ${pkColumn.name} ${functionName}ID
 	* @return ${functionName}
 	*/
-	public ${ClassName} select${ClassName}ById(${pkColumn.type} ${pkColumn.name});
+	${ClassName} select${ClassName}ById(${pkColumn.type} ${pkColumn.name});
 
 	/**
 	* 查询${functionName}列表
@@ -26,7 +26,7 @@ public interface I${ClassName}BizService {
 	* @param ${className} ${functionName}
 	* @return ${functionName}集合
 	*/
-	public List<${ClassName}> select${ClassName}List(${ClassName} ${className});
+	List<${ClassName}> select${ClassName}List(${ClassName} ${className});
 
 	/**
 	* 新增${functionName}
@@ -34,7 +34,7 @@ public interface I${ClassName}BizService {
 	* @param ${className} ${functionName}
 	* @return 结果
 	*/
-	public int insert${ClassName}(${ClassName} ${className});
+	int insert${ClassName}(${ClassName} ${className});
 
 	/**
 	* 修改${functionName}
@@ -42,7 +42,7 @@ public interface I${ClassName}BizService {
 	* @param ${className} ${functionName}
 	* @return 结果
 	*/
-	public int update${ClassName}(${ClassName} ${className});
+	int update${ClassName}(${ClassName} ${className});
 
 	/**
 	* 批量删除${functionName}
@@ -50,7 +50,7 @@ public interface I${ClassName}BizService {
 	* @param ${pkColumn.name}s 需要删除的${functionName}ID
 	* @return 结果
 	*/
-	public int delete${ClassName}ByIds(${pkColumn.type}[] ${pkColumn.name}s);
+	int delete${ClassName}ByIds(${pkColumn.type}[] ${pkColumn.name}s);
 
 	/**
 	* 删除${functionName}信息
@@ -58,6 +58,6 @@ public interface I${ClassName}BizService {
 	* @param ${pkColumn.name} ${functionName}ID
 	* @return 结果
 	*/
-	public int delete${ClassName}ById(${pkColumn.type} ${pkColumn.name});
+	int delete${ClassName}ById(${pkColumn.type} ${pkColumn.name});
 	
 }
